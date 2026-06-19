@@ -1,0 +1,27 @@
+# HemoLink - AI Orchestrated Blood Supply Chain Intelligence Platform
+# Core
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+pydantic-settings==2.7.1
+python-dotenv==1.0.1
+
+# Database
+sqlalchemy==2.0.36
+aiosqlite==0.20.0
+
+# Vector Store (Semantic Search)
+chromadb==0.5.23
+
+# ML / Data Science
+numpy==1.26.4
+scikit-learn==1.6.0
+scipy==1.14.1
+
+# API
+python-multipart==0.0.18
+httpx==0.28.1
+
+# Utilities
+uuid6==2024.7.10
+python-dateutil==2.9.0

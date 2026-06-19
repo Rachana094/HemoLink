@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HemoLink — AI-Orchestrated Blood Supply Chain Intelligence Platform. Multi-agent system for predictive blood donation management.">
+    <title>HemoLink — AI Blood Supply Chain Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="stylesheet" href="/static/css/components.css">
+</head>
+<body>
+    <!-- ═══════════ SIDEBAR NAVIGATION ═══════════ -->
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ff4d6d"/>
+                                <stop offset="100%" style="stop-color:#c9184a"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M20 35C20 35 6 24 6 15C6 10 10 6 15 6C17.5 6 19.5 7 20 9C20.5 7 22.5 6 25 6C30 6 34 10 34 15C34 24 20 35 20 35Z" fill="url(#logoGrad)"/>
+                        <circle cx="20" cy="18" r="4" fill="white" opacity="0.9"/>
+                        <rect x="18.5" y="14" width="3" height="8" rx="1.5" fill="white" opacity="0.9"/>
+                        <rect x="16" y="16.5" width="8" height="3" rx="1.5" fill="white" opacity="0.9"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>HemoLink</h1>
+                    <span class="logo-subtitle">AI Intelligence Platform</span>
+                </div>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="nav-link active" data-view="dashboard" id="nav-dashboard">
+                <span class="nav-icon">◉</span><span class="nav-text">Command Center</span>
+            </a></li>
+            <li><a href="#" class="nav-link" data-view="matching" id="nav-matching">
+                <span class="nav-icon">⬡</span><span class="nav-text">AI Matching</span>
+            </a></li>
+            <li><a href="#" class="nav-link" data-view="predictions" id="nav-predictions">
+                <span class="nav-icon">◈</span><span class="nav-text">Predictions</span>
+            </a></li>
+            <li><a href="#" class="nav-link" data-view="map" id="nav-map">
+                <span class="nav-icon">◎</span><span class="nav-text">Geo Routing</span>
+            </a></li>
+            <li><a href="#" class="nav-link" data-view="digital-twin" id="nav-digital-twin">
+                <span class="nav-icon">⬢</span><span class="nav-text">Digital Twins</span>
+            </a></li>
+            <li><a href="#" class="nav-link" data-view="blood-bank" id="nav-blood-bank">
+                <span class="nav-icon">🏥</span><span class="nav-text">Blood Banks</span>
+            </a></li>
+            <li><a href="#" class="nav-link" data-view="whatsapp" id="nav-whatsapp">
+                <span class="nav-icon">💬</span><span class="nav-text">WhatsApp Agent</span>
+            </a></li>
+            <li><a href="#" class="nav-link" data-view="agents" id="nav-agents">
+                <span class="nav-icon">⟐</span><span class="nav-text">Agent Hub</span>
+            </a></li>
+            <li><a href="#" class="nav-link" data-view="analytics" id="nav-analytics">
+                <span class="nav-icon">◆</span><span class="nav-text">Analytics</span>
+            </a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="system-status">
+                <span class="status-dot pulse"></span>
+                <span class="status-text">All Systems Operational</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════ MAIN CONTENT ═══════════ -->
+    <main id="main-content" class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
+                <h2 id="page-title" class="page-title">Command Center</h2>
+            </div>
+            <div class="top-bar-right">
+                <div class="search-container">
+                    <input type="text" id="global-search" placeholder="Search donors, requests..." class="search-input">
+                </div>
+                <div class="notification-bell" id="notification-bell">
+                    <span class="bell-icon">🔔</span>
+                    <span class="notification-badge" id="notif-count">3</span>
+                </div>
+                <div class="emergency-btn-container">
+                    <button id="emergency-btn" class="emergency-btn">🚨 Emergency</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- View Container -->
+        <div id="view-container" class="view-container">
+            <!-- Views are injected by JS -->
+        </div>
+    </main>
+
+    <!-- ═══════════ EMERGENCY MODAL ═══════════ -->
+    <div id="emergency-modal" class="modal-overlay hidden">
+        <div class="modal glass-card">
+            <div class="modal-header emergency-header">
+                <h2>🚨 Emergency Blood Request</h2>
+                <button id="close-modal" class="modal-close">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="em-blood-type">Blood Type Required</label>
+                        <select id="em-blood-type" class="form-select">
+                            <option value="O-">O- (Universal Donor)</option>
+                            <option value="O+">O+</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+" selected>B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="em-units">Units Needed</label>
+                        <input type="number" id="em-units" value="2" min="1" max="20" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="em-urgency">Urgency Level</label>
+                        <select id="em-urgency" class="form-select">
+                            <option value="critical" selected>🔴 Critical (&lt;30 min)</option>
+                            <option value="urgent">🟠 Urgent (&lt;2 hours)</option>
+                            <option value="normal">🟡 Normal (&lt;24 hours)</option>
+                            <option value="scheduled">🟢 Scheduled</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="em-hospital">Hospital</label>
+                        <input type="text" id="em-hospital" value="Victoria Hospital, Bangalore" class="form-input">
+                    </div>
+                </div>
+                <button id="em-submit" class="btn btn-emergency btn-full">
+                    ⚡ Activate AI Orchestration
+                </button>
+                <div id="em-results" class="emergency-results hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════ NOTIFICATION PANEL ═══════════ -->
+    <div id="notification-panel" class="notification-panel hidden">
+        <div class="notif-header">
+            <h3>Alerts</h3>
+            <button id="close-notif" class="notif-close">✕</button>
+        </div>
+        <div id="notif-list" class="notif-list"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/dashboard.js"></script>
+    <script src="/static/js/matching.js"></script>
+    <script src="/static/js/predictions.js"></script>
+    <script src="/static/js/map.js"></script>
+    <script src="/static/js/digital-twin.js"></script>
+    <script src="/static/js/blood-bank.js"></script>
+    <script src="/static/js/whatsapp-agent.js"></script>
+    <script src="/static/js/analytics.js"></script>
+</body>
+</html>
