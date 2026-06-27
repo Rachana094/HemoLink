@@ -54,7 +54,7 @@ function navigateTo(view) {
         dashboard: 'Command Center',
         matching: 'AI Matching Engine',
         predictions: 'Predictive Intelligence',
-        map: 'Geo-Spatial Routing',
+        map: 'Blood Warrior Dispatch',
         'digital-twin': 'Digital Twin Explorer',
         'blood-bank': 'Blood Bank & Hospital Registry',
         whatsapp: 'WhatsApp Agent Simulator',
@@ -288,6 +288,10 @@ async function loadNotifications() {
 function destroyCharts() {
     Object.values(state.charts).forEach(c => { try { c.destroy(); } catch(e) {} });
     state.charts = {};
+    if (window.waLogInterval) {
+        clearInterval(window.waLogInterval);
+        window.waLogInterval = null;
+    }
 }
 
 function animateValue(el, start, end, duration = 1000) {

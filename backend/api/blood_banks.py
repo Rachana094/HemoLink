@@ -111,6 +111,7 @@ def _seed_blood_banks():
 
 _seed_blood_banks()
 
+@router.get("")
 @router.get("/")
 async def list_blood_banks(blood_type: Optional[str] = None):
     results = list(blood_banks_db.values())

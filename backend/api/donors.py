@@ -82,6 +82,7 @@ def _seed_donors():
 _seed_donors()
 
 
+@router.get("")
 @router.get("/", response_model=List[DonorResponse])
 async def list_donors(limit: int = 50, blood_type: Optional[str] = None):
     donors = list(donors_db.values())

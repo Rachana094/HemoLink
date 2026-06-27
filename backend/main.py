@@ -9,7 +9,7 @@ from fastapi.responses import FileResponse
 import os
 
 from backend.core.config import settings
-from backend.api import donors, matching, predictions, analytics, blood_banks
+from backend.api import donors, matching, predictions, analytics, blood_banks, whatsapp
 
 
 def create_app() -> FastAPI:
@@ -36,19 +36,7 @@ def create_app() -> FastAPI:
     app.include_router(predictions.router)
     app.include_router(analytics.router)
     app.include_router(blood_banks.router)
-
-    # ── Static Files (Frontend) ──
-    frontend_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend")
-    if os.path.isdir(frontend_dir):
-        app.mount("/static", StaticFiles(directory=frontend_dir), name="static")
-
-    # ── Root → serve frontend ──
-    @app.get("/")
-    async def serve_frontend():
-        index_path = os.path.join(frontend_dir, "index.html")
-        if os.path.exists(index_path):
-            return FileResponse(index_path)
-        return {"message": "HemoLink API is running. Visit /docs for API documentation."}
+    app.include_router(whatsapp.router)
 
     # ── Health Check ──
     @app.get("/health")
@@ -58,6 +46,11 @@ def create_app() -> FastAPI:
             "platform": settings.APP_NAME,
             "version": settings.APP_VERSION,
         }
+
+    # ── Static Files (Frontend) ──
+    frontend_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend")
+    if os.path.isdir(frontend_dir):
+        app.mount("/", StaticFiles(directory=frontend_dir, html=True), name="static")
 
     return app
 
